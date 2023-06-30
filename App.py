@@ -1,3 +1,10 @@
+import subprocess
+
+def install_package(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Install keytotext package
+install_package("keytotext")
 import streamlit as st
 import keytotext
 from keytotext import pipeline
