@@ -1,4 +1,3 @@
-!pip install keytotext
 import streamlit as st
 import keytotext
 from keytotext import pipeline
