@@ -1,17 +1,4 @@
 import streamlit as st
-import subprocess
-import sys
-
-def install_package(package):
-    subprocess.run([sys.executable, "-m", "pip", "install", "--no-cache-dir", package], check=True)
-
-# Install keytotext package
-install_package("keytotext")
-
-# Rest of your Streamlit app code
-# ...
-# ...
-import streamlit as st
 import keytotext
 from keytotext import pipeline
 Keywords = []
