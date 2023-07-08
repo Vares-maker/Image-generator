@@ -1,18 +1,19 @@
 import streamlit as st
-import keytotext
-from keytotext import pipeline
-Keywords = []
-Splited = []
-nlp = pipeline("mrm8488/t5-base-finetuned-common_gen")
-st.markdown("<h1 style='text-align: center; color: Black;'>Varesh AI</h1>", unsafe_allow_html=True)
-st.markdown("<h1 style='text-align: center; color: Black;'>Sentence Maker</h1>", unsafe_allow_html=True)
-st.info("To type the keywords type with comma and space after each comma Example:- Key, Word")
-col1, col2, col3 = st.columns(3)
+from PIL import Image
+Input = st.text_input("Type the prompt:")
+import requests
+image_url = "https://image.pollinations.ai/prompt/"+Input  # Replace with the actual image URL
 
-Keywords =  st.text_input("Type the keywords")
-Keywords = Keywords.split(",")
-Output = nlp(Keywords)
+response = requests.get(image_url)
+if response.status_code == 200:
+    with open("image.jpg", "wb") as f:
+        f.write(response.content)
+    print("Image downloaded successfully!")
+else:
+    print("Failed to download the image.")
 
-if(st.button("Generate")):
-    st.info(Output)
+# Open the image file
+image = Image.open('image.jpg')
 
+# Display the image
+st.image(image, caption='The output', use_column_width=True)
