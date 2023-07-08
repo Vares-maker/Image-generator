@@ -1,8 +1,0 @@
-torch 
-torch_xla
-pandas
-streamlit
-streamlit_tags
-myst_parser
-fastapi
-uvicorn
